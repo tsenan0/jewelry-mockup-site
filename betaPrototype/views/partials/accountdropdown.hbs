@@ -1,0 +1,22 @@
+<div class="dropdown-menu-nobs">
+    <div class="nav-user"> Hi, {{account.name}} <i class="fa fa-user" aria-hidden="true"></i>
+    </div>
+    <div class="dropdown-menu-items">
+        <a class="profile" href="/users/profile/{{account.id}}">
+            Profile
+        </a>
+        {{#if_eq account.account_type 'employee' }}
+        <a class="addProduct" href="/addProduct">
+            Add new product
+        </a>
+        {{/if_eq}}
+        <form action="/users/logout" method="post">
+            <input type="hidden" value="{{csrf}}">
+            <button class="nav-items" id="logout" type="submit">Log out <i class="fa fa-sign-in"
+                    aria-hidden="true"></i></button>
+        </form>
+    </div>
+</div>
+<div>
+    <li><a id="cart" target="_self" href="/cart/cart-list">Cart</a><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
+</div>

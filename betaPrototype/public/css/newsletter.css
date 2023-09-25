@@ -1,0 +1,46 @@
+.container2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.newsletter, #quiz-button {
+    /* position: fixed;
+    bottom: 70px;
+    left: 20px; */
+    background-color: #daebed;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.newsletter h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.newsletter form {
+    margin-top: 10px;
+    display: flex;
+}
+
+.newsletter input[type="email"] {
+    flex: 1;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+
+.newsletter button {
+    background-color: teal;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #004848;
+}

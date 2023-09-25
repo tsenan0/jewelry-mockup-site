@@ -1,0 +1,60 @@
+ {{>breadcrumbs}}
+
+<main class="form-control">
+    <div class="container3">
+        <h1> </h1>
+        <h2> Add a product </h2>
+
+        <form class="form" method="POST" action="/product/createProduct" enctype="multipart/form-data">
+            <div class="input-group">
+                <input class="input-text" type="text" name="title" id="title" required="">
+                <label for="title">Title</label>
+            </div>
+
+            <div class="input-group">
+                <input class="input-text" type="text" name="type" id="type" required="">
+                <label for="type">Jewelry Type</label>
+            </div>
+
+            <div class="input-group">
+                <input class="input-text" type="text" name="material" id="material" required="">
+                <label for="material">Material</label>
+            </div>
+
+            <div class="input-group">
+                <input class="input-text" type="text" name="gemstone" id="gemstone" required="">
+                <label for="gemstone">Gemstone</label>
+            </div>
+
+            <div class="input-group">
+                <input class="input-text" type="text" name="description" id="description" required="">
+                <label for="description">Description</label>
+            </div>
+
+            {{!-- <div class="input-group">
+                <input class="input-text" type="text" name="size" id="size" required="">
+                <label for="size">Size</label>
+            </div> --}}
+            <div class="input-group">
+                <input class="input-text" type="number" name="quantity" id="quantity" min="1" required="">
+                <label for="quantity">Quantity</label>
+            </div>
+
+
+            <div class="input-group">
+                <input class="input-text" type="text" name="price" id="price" required="">
+                <label for="price">Price</label>
+            </div>
+
+            <div class="input-image">
+                <label for="img">Upload images</label>
+                <input class="input-text" type="file" name='uploadImage' id="uploadImage" />
+            </div>
+
+            <br>
+            <input class="submit" type="submit" value="Submit" />
+
+        </form>
+
+    </div>
+</main>

@@ -1,0 +1,19 @@
+ {{>breadcrumbs}}
+
+<main class="form-control">
+    <div class="container3">
+        <h2>Request Refund</h2>
+        <form class="form" action="/users/req-refund" method="POST" enctype="application/x-www-form-urlencoded">
+            <div class="input-group">
+                <input class="input-text" type="text" name="number" id="number" required="">
+                <label for="order-number">Order number</label>
+            </div>
+
+            <div class="input-group">
+                <input class="input-text" type="text" name="email" id="email" required="" autocomplete="off">
+                <label for="email">Email</label>
+            </div>
+            <input class="submit" type="submit" value="Submit Request">          
+        </form>
+    </div>
+</main>

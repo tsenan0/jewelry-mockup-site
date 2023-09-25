@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-left">
+        <img class="card-image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}"
+            alt="Missing Image">
+    </div>
+    <div class="card-right">
+        <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
+        {{#if this.customized}}
+        <p class="custom">{{this.type}}, {{this.gemstone}}, {{this.material}}, 
+            Size: {{this.size}}, 
+            Engraving: {{this.engraving}}, 
+            Packaging: {{this.packaging}}</p>
+        {{/if}}
+        <p class="card-price">${{this.price}}</p>
+        <div class="card-quantity">
+            <label for="quantity">Quantity: </label>
+            <div class="counter">
+                {{#if review}}
+                <p class="card-qty">{{this.quantity}}</p>
+                {{else}}
+                <form class="counter-down" action="/cart/dec-qty/{{this.id}}" method="POST"
+                    enctype="application/x-www-form-urlencoded">
+                    <input class="down" type="submit" value="-">
+                </form>
+                <p class="card-qty">{{this.quantity}}</p>
+                <form class="counter-up" action="/cart/inc-qty/{{this.id}}" method="POST"
+                    enctype="application/x-www-form-urlencoded">
+                    <input class="up" type="submit" value="+">
+                </form>
+                {{/if}}
+            </div>
+        </div>
+        {{#if review}}
+        {{else}}
+        <form class="card-remove-form" action="/cart/remove/{{this.id}}" method="POST"
+            enctype="application/x-www-form-urlencoded">
+            <input class="card-remove" type="submit" value="Remove">
+        </form>
+        {{/if}}
+    </div>
+</div>

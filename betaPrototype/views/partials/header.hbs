@@ -1,0 +1,27 @@
+<header class="header">
+    <nav class="nav-bar">
+        <ul style="list-style: none;">
+            <li><a id="about-us" target="_self" href="/AboutUs">About us</a></li>
+            <li><a id="shop" target="_self" href="/Shop">Shop</a></li>
+        </ul>
+        <div class="my-icon">
+            <a class="my-icon-logo" id="logo" target="_self" href="/"><img src="/public/images/ArtisanAura.ico" {{!-- ^^^^^ / is for the
+                    index page which for right now is layout since partial not yet made--}} alt="ArtisanAura Icon"></a>
+        </div>
+        <ul>
+            {{#if isLoggedIn}}
+            {{>accountdropdown}}
+            {{else}}
+            <li><a id="login" target="_self" href="/login">Sign In</a></li>
+            <li><a id="cart" target="_self" href="/cart/cart-list">Cart</a><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
+            {{/if}}
+            
+        </ul>
+    </nav>
+    <div class="search-bar">
+        <form action="/search" method="GET" enctype="application/x-www-form-urlencoded">
+            <input type="text" placeholder="Search.." name="q">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</header>

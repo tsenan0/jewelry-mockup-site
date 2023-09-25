@@ -1,0 +1,28 @@
+ {{>breadcrumbs}}
+
+<main class="form-control">
+    <div class="container3">
+        <h2>Login</h2>
+        <form class="form" action="/users/login" method="POST" enctype="application/x-www-form-urlencoded">
+            <div class="input-group">
+                <input class="input-text" type="text" name="email" id="email" required="" autocomplete="off">
+                <label for="email">Email</label>
+            </div>
+
+            <div class="input-group">
+                <input class="input-text" type="password" name="password" id="password" required="">
+                <label for="password">Password</label>
+            </div>
+
+            <input class="submit" type="submit" value="Log in">
+            <div class="create-account" id="registerLink">
+                <label>Need to create an account?</label>
+                <div>
+                    <a type="text" href="registration">Create an account</a>
+                </div>
+                
+            </div>
+            
+        </form>
+    </div>
+</main>

@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/public/css/cart.css">
+<main class="main-content">
+    <div class="review-details">
+        <p class="review-title">Review Information</p>
+
+        {{#if results}}
+        {{#each results}}
+            {{> card this review=true}}
+        {{/each}}
+        {{/if}}
+
+        <p class="review-title">Email</p>
+        <p class="shipping-info">{{info.email}}
+
+
+        </p>
+
+        <p class="review-title">Shipping Address</p>
+        <p class="shipping-info">{{info.name}}
+            {{info.address}}
+            {{info.city}}, {{info.state}} {{info.zip}}
+
+
+        </p>
+        <p class="review-title">Payment</p>
+        <p class="pay-info">{{info.card}}
+            {{info.exp}} {{info.cvv}}
+
+
+        </p>
+    </div>
+    <div class="side">
+        <div class="side-content">
+            <p class="text">Subtotal:</p>
+            <p class="cost" id="subtotal">${{cost.subtotal}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Tax:</p>
+            <p class="cost" id="tax">${{cost.tax}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Shipping:</p>
+            <p class="cost">${{cost.shipping}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Total:</p>
+            <p class="total-cost" id="total">${{cost.total}}</p>
+        </div>
+        <form class="review-form" action="/cart/place-order" method="POST"
+            enctype="application/x-www-form-urlencoded">
+            <input class="submit" type="submit" value="Place Order">
+        </form>
+    </div>
+</main>

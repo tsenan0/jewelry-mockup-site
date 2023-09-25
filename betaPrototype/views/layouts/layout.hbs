@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>{{title}}</title>
+    <link rel="icon" href="/public/images/ArtisanAura.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="/public/css/forms.css">
+    <link rel="stylesheet" href="/public/css/dropdownnav.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{!-- <link rel="stylesheet" href="/public/css/ddn.css"> --}}
+    
+    {{#each css}}
+    <link rel="stylesheet" href="/public/css/{{this}}">
+    {{!-- for css specific to page  --}}
+    {{/each}} 
+
+    {{#each js}}
+    <script defer src="/public/js/{{this}}"></script>
+    {{!--for js specific to page --}}
+    {{/each}}
+
+</head>
+
+<body>
+    {{> header}}
+    {{#if (neo messages)}}
+    {{> flashmessage this}}
+    {{/if}}
+    {{{body}}}
+    {{> footer}}
+</body>
+
+
+</html>

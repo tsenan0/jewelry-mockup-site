@@ -1,0 +1,112 @@
+<head>
+    <style>
+/* product recommenations style*/
+  .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+        .column {
+            flex: 20%;
+            max-width: 25%;
+            padding: 0 4px;
+            text-decoration: none;
+            color: #323232;
+        }
+        .column img {
+            width: 100%;
+        }
+        .column:hover {
+            background-color: #daebed;
+        }
+
+        /* makes two column-layout instead of four columns */
+        @media screen and (max-width: 800px) {
+            .column {
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+        /* makes menu and grid stack on top of each other */
+        @media screen and (max-width: 600px) {
+            .column {
+                flex: 100%;
+                max-width: 100%;
+            }
+        }
+
+/* customize your own  */
+@media (min-width: 800px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-gap: 16px;
+  }
+
+  aside {
+    align-self: start;
+  }
+}
+</style>
+</head>
+
+<main>
+        <div style="margin: auto; max-width: 1300px; padding: 10px;">            
+
+     <div style="margin: 50px; text-align:center;">    
+        <h1>ArtisanAura Jewelry</h1>
+         <p>Distinctive Artisan and Locally Crafted Jewelry.</p>
+           
+    </div>
+    
+
+   
+    
+ <!-- product categories -->
+ 
+           <div style="margin: 0 auto 20px; text-align: center; border-top: 1px solid #70707194; padding: 20px 0 50px 0; border-bottom: 1px solid #70707194;"> 
+                <h2>Shop for Your Special Occasion</h2>
+                <div class="row"> 
+                <a href="Shop" class="column">
+                    <h3>Formal Event</h3>
+                  <img src="/public/images/Product_Formal.jpg" alt="Formal Event">
+                </a>
+                <a href="Shop" class="column">
+                    <h3>Engagement</h3>
+                   <img src="/public/images/Product_Engagement.jpg" alt="Engagement"> 
+                </a>
+                <a href="Shop" class="column">
+                    <h3>Holidays</h3>
+                   <img src="/public/images/Product_Holiday.jpg" alt="Holidays">
+                </a>
+                <a href="Shop" class="column">
+                    <h3>Casual</h3>
+                   <img src="/public/images/Product_Casual.jpg" alt="Casual">
+                </a>
+                </div>
+            </div>
+    
+    
+<div class="wrapper" style="display: flex;flex-wrap: wrap;margin: 0 auto 50px;text-align: center;padding: 20px 0 20px 0;border-bottom: 1px solid #70707194;"> 
+  <aside style="text-align:center;padding: 0 10px 10px;width: 100%;margin-bottom: 50px;flex: 20%;max-width: 40%;"> 
+            <h2>Your Personalized Shopping Experience</h2>
+            <p style="text-align: justify;">ArtisanAura takes personalization to a new level. Our interactive charm and engraving feature allow you to add a personal touch to your selected pieces. You can also take our style quiz to discover jewelry curated to your individual style preferences. Uncover the unique, meaningful narratives behind our pieces as we provide in-depth content about their symbolic and cultural meanings.</p>
+            <!-- customize jewelry feature --> 
+            <a href="productsingle" class="btn"><h3>Customize Your Own Jewelry</h3> </a>
+            </aside>
+  <main style="padding: 10px;max-width: 60%;"><img alt="ArtisanAura Custom Jewelry" style="height: auto;width: 100%;" src="/public/images/Banner_Home_Page.jpg">
+             </main>
+</div> 
+    
+   
+
+           <div style="margin: 0 50px 50px; text-align:center;"> 
+            <h2>Join the ArtisanAura Community</h2>
+            <p style="text-align: justify;">By choosing ArtisanAura, you contribute to a more ethical, sustainable, and customer-oriented future in the online jewelry retail industry. Come join us in revolutionizing the way you discover and connect with unique, meaningful jewelry. Embark on this remarkable journey with us today!</p>
+            </div>
+
+    </div>
+
+{{>newsletter}}
+{{>quiz}}
+</main>

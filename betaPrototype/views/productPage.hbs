@@ -1,0 +1,183 @@
+<link rel="stylesheet" href="/public/css/product.css">
+<link rel="stylesheet" href="/public/css/productspage.css">
+{{>breadcrumbs}}
+
+<main class="product-page" style="margin: auto; max-width: 1300px; padding: 10px;">
+    {{this.id}}
+    <div class="product-images">
+        <h3 class="title">{{currentProduct.title}}</h3>
+        <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{currentProduct.image}}"
+            alt="product images coming soon" />
+    </div>
+
+    {{#if (isEmployee account_type) }}
+    {{!-- employee controls --}}
+    <form action="/product/update/{{currentProduct.id}}" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{currentProduct.title}}" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description">{{currentProduct.description}}</textarea>
+
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" value="{{currentProduct.price}}" required>
+
+        <input type="submit" value="Update Product">
+    </form>
+    {{/if}}
+
+    <div class="product-details">
+        {{{displayRatingStars currentProduct.rating}}}
+        <h3 class="price">${{currentProduct.price}}</h3>
+        <div class="description">
+            <label class="desc-header">Description</label>
+            <p class="description">{{currentProduct.description}}</p>
+        </div>
+        <div class="quantity-dropdown">
+            <label for="quantity">Quantity:</label>
+            <select name="quantity" id="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <form action="/cart/add-item/{{currentProduct.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+            <button class="add-item" name="button" value="add">Add to cart</button>
+            <button class="saveButtons" name="button" value="save">Save</button>
+        </form>
+
+        
+
+        <button id="facebookButton">Share on Facebook</button>
+        <button id="twitterButton">Share on Twitter</button>
+
+        <script>
+            // Share on Facebook
+            document.getElementById('facebookButton').addEventListener('click', function () {
+                var url = encodeURIComponent(window.location.href);
+                var shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                openShareWindow(shareUrl);
+            });
+
+
+            // Share on Twitter
+            document.getElementById('twitterButton').addEventListener('click', function () {
+                var title = encodeURIComponent('Check out this amazing product!');
+                var url = encodeURIComponent(window.location.href);
+                var shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+                openShareWindow(shareUrl);
+            });
+
+            function openShareWindow(url) {
+                var width = 600;
+                var height = 400;
+                var left = (window.innerWidth - width) / 2;
+                var top = (window.innerHeight - height) / 2;
+
+                window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top}`);
+            }
+        </script>
+
+    </div>
+
+
+
+    <!--Product Reviews Form-->
+    <div class="product-reviews">
+        {{#if isLoggedIn}}
+        <div class="review-form">
+            <form action="/product/review" method="POST" enctype="application/x-www-form-urlencoded">
+                <input type="hidden" name="productid" value="{{currentProduct.id}}">
+                <input type="hidden" id="rating-value-input" name="rating" value="0" />
+                <input type="hidden" name="accountid" value="{{accountId}}">
+                <div class="rating-wrap">
+                    <h2>Rate this product</h2>
+                    <div class="center">
+                        <fieldset class="rating">
+                            <label for="star1" class="star" onclick="setRatingValue(1)"></label>
+                            <label for="star2" class="star" onclick="setRatingValue(2)"></label>
+                            <label for="star3" class="star" onclick="setRatingValue(3)"></label>
+                            <label for="star4" class="star" onclick="setRatingValue(4)"></label>
+                            <label for="star5" class="star" onclick="setRatingValue(5)"></label>
+                        </fieldset>
+                    </div>
+                </div>
+                <br>
+                <label for="title">Review Title</label>
+                <br>
+                <input type="text" id="reviewtitle" name="reviewtitle" placeholder="Enter your title here">
+                <br>
+                <label for="review">Write a review</label>
+                <br>
+                <textarea id="review" name="review" rows="4" cols="50" placeholder="Enter your comment"></textarea>
+                <br>
+                <button class="submit-review">Submit Review</button>
+            </form>
+        </div>
+        {{else}}
+
+        <a href="/login" class="review-message">
+            <p>Please sign in to write a review.</p>
+        </a>
+
+        {{/if}}
+
+        <script>
+            // JavaScript function to set the rating value
+            function setRatingValue(rating) {
+                const ratingValueInput = document.getElementById('rating-value-input');
+                ratingValueInput.value = rating;
+                updateStars(rating);
+            }
+
+            // JavaScript function to update the star icons
+            function updateStars(rating) {
+                const labels = document.querySelectorAll('.rating-wrap label');
+                labels.forEach((label, index) => {
+                    if (index < rating) {
+                        label.classList.add('star-fill');
+                    } else {
+                        label.classList.remove('star-fill');
+                    }
+                });
+            }
+        </script>
+
+        <!--Product Reviews-->
+        {{#if reviews}}
+        <h2>Product Reviews:</h2>
+        <ul>
+            {{#each reviews}}
+            <li>
+                <h4>Review Title: {{title}}</h4>
+                <p>Rating: {{rating}}</p>
+                {{{displayRatingStars rating}}}
+                <p>{{description}}</p>
+                {{#isReviewByAccountId user_id}}
+                <form action="/product/delete-review/{{id}}" method="POST">
+                    <input type="hidden" name="productid" value="{{product_id}}">
+                    <button>Delete</button>
+                </form>
+                {{/isReviewByAccountId}}
+            </li>
+            {{/each}}
+        </ul>
+
+        {{else}}
+        <p>No reviews available for this product.</p>
+        {{/if}}
+    </div>
+
+
+</main>
+<div class="similar">
+    <h2 class="title">Similar Products:</h2>
+    <div class="carousel">
+        {{#each relatedProducts}}
+        <a class="item" href="/product/{{id}}">
+            <img src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{thumbnail}}" alt="{{title}}">
+            <h2 class="title">{{title}}</h2>
+        </a>
+        {{/each}}
+    </div>
+</div>

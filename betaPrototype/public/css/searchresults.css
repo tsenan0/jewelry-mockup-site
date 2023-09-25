@@ -1,0 +1,79 @@
+
+/* Styles for the main content */
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  max-width: 1300px;
+  padding: 10px;
+}
+
+/* Styles for item links */
+.item-link {
+  display: block;
+  width: 300px;
+  margin: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.item-link:hover {
+  background-color: #f5f5f5;
+}
+
+/* Styles for item container */
+.item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/* Styles for item name */
+.title {
+  font-size: 18px;
+  margin-bottom: 5px;
+  height: 70px;
+}
+
+/* Styles for item image */
+.image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Styles for item description */
+.description {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Styles for item price */
+.price {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Styles for "Item not found" message */
+#not-found {
+  font-size: 18px;
+  color: red;
+  text-align: center;
+}
+
+/* quiz results message */
+.description-message {
+  padding: 20px;
+  margin: 20px;
+}
+
+
+.star-fill {
+  color: gold; 
+}
+
+.fa-star-o {
+  color: #333;
+}

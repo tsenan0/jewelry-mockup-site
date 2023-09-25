@@ -1,0 +1,148 @@
+/* CSS for the product page */
+.customization-option {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.customization-option label {
+  font-weight: bold;
+  padding: 3px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.customization-option label:hover {
+  background-color: #d0d0d0;
+}
+
+.customization-option input[type="radio"] {
+  display: none; /* Hide the default radio buttons */
+}
+
+.customization-option input[type="radio"] + label {
+  margin-right: 10px;
+}
+
+.customization-option input[type="radio"]:checked + label {
+  background-color: #a3bbd3;
+  color: #fff;
+}
+
+/* Style for the customization form */
+.customization-form {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+}
+
+/* Style for labels */
+.customization-label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Style for select and input fields */
+.customization-field {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.customization-field:hover {
+  border-color: #007bff;
+}
+
+.customization-field select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.customization-field select:hover {
+  border-color: #007bff;
+}
+
+
+#saveButton {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: teal;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.saveButtons:hover {
+  background-color: #004848;
+}
+
+#facebookButton{
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #475b90;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#facebookButton:hover{
+  background-color: #004848
+}
+
+#twitterButton {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #475b90;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#twitterButton:hover{
+  background-color: #004848
+}
+
+
+/* Style for images */
+.product-images img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .customization-form {
+      padding: 10px;
+  }
+  .customization-label,
+  .customization-field {
+      margin-bottom: 10px;
+  }
+}
+
+/* Clear floating elements */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  

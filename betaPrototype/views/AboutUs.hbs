@@ -1,0 +1,96 @@
+<head>
+<style>
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    padding: 10px;
+}
+
+.third {
+    flex: 33.33%;
+    max-width: 300px;
+}
+
+.two-thirds {
+    flex: 66.67%;
+    max-width: 500px;
+}
+
+@media (max-width: 600px) {
+    .column {
+        flex: 100%;
+    }
+}
+</style>  
+</head>
+ {{>breadcrumbs}}
+
+
+<main>
+<div style="margin: auto; max-width: 1300px; padding: 10px;">            
+  
+            
+  <div style="margin: 50px; text-align:center;">    
+        <h1>About Us</h1>
+        <p>Artisanal Jewelry. One-of-a-kind Treasures.</p>
+    </div>
+
+
+<div class="wrapper" style="margin: 0 auto 20px;display: flex;flex-wrap: wrap;padding: 50px 0;border-bottom: 1px solid #70707194;border-top: 1px solid #70707194;text-align: center;">
+  <aside style="text-align:center;padding: 0 10px 10px;width: 100%;margin-bottom: 50px;flex: 20%;max-width: 40%;"> 
+            <h2>Revolutionizing Jewelry Shopping Experience</h2>
+            <p style="text-align: justify;">Embrace the convergence of innovation, personalization, and sustainability with ArtisanAura, your go-to online platform for high-quality, distinctive artisan and locally crafted jewelry. From necklaces to bracelets, rings, and engagement rings, our eclectic collection showcases an array of handmade pieces that radiate individuality and creativity.</p>    
+
+            </aside>
+  <main style="padding: 10px;max-width: 60%;"><img style="height: auto;width: 100%;" src="/public/images/Banner_About.jpg" alt="About ArtisanAura Jewelry">
+             </main>
+</div>
+    
+    
+<div style="margin: 20px 50px; text-align:center;padding: 20px 0;">      
+        <h2>Discover Unique Artisan-Crafted Treasures</h2>
+        <p style="text-align: justify;">Browse through our diverse assortment of artisanal jewelry, thoughtfully crafted by local artisans, each piece telling a unique story. Our aim is to shine a spotlight on local craftsmanship, ensuring the artists receive the recognition they deserve while providing you with truly one-of-a-kind treasures.</p>
+</div>
+
+
+
+
+<div style="margin: 0 auto 20px; text-align: center; border-top: 1px solid #70707194; padding: 20px 0; border-bottom: 1px solid #70707194;">            
+             <!-- artisan photo and bio -->     
+<div class="row" style="margin: 0 50px 20px; justify-content:center; ">
+    
+ <div class="column third" style="margin: 20px;">
+     <h2 style="text-align: center;">Artisan Spotlight</h2>
+   <div>
+ <img src="/public/images/Artisan_Spotlight.jpg" alt="Artisan Spotlight" style="max-width: 300px;">
+                </div>
+            </div>
+            
+            <div class="column two-thirds" style="margin: 20px;">
+                <div style="text-align: justify;">
+                    <h4>About Our Featured Artisan: Isabella Sterling</h4>
+                    <p>Isabella Sterling, the heart and soul behind many of ArtisanAura's captivating pieces, is a passionate artist who found her calling in the realm of jewelry crafting. Born and raised in the vibrant city of Seattle, Isabella’s creative journey began in her grandmother's attic, where she was fascinated by an old jewelry box filled with beautiful trinkets from the past. This early exposure sparked a love for intricate designs and the transformative power of jewelry that continues to inspire her craft today.</p>
+                    <p>With a degree in Fine Arts and a natural flair for sculpting, Isabella took the leap into the jewelry-making world, embracing it as a platform where her artistic abilities could truly shine. She thrives on the joy that her creations bring to those who wear them, believing that each piece of jewelry holds the power to express one's unique identity.</p>
+                    <p>Isabella specializes in crafting sustainable, artisanal jewelry, intertwining modern aesthetics with traditional techniques. From ethereal necklaces to bespoke bracelets and rings, her creations reflect a distinct blend of sophistication and charm. Drawing inspiration from nature, her designs often incorporate organic shapes and patterns, making each piece a symbolic memento that resonates deeply with the wearer.</p>
+                    <p>Her ultimate goal is to create not just jewelry, but wearable art that tells a story - whether it's a tale of the artist's inspiration, the wearer's individuality, or the beautiful blend of both. Through her work with ArtisanAura, Isabella Sterling continues to redefine what it means to wear, love, and live in jewelry.</p>
+                </div> 
+
+            </div>
+
+        </div>
+ </div>   
+    
+<div style="margin: 20px 50px; text-align:center;padding: 20px 0;">      
+        <h2>Shop With Confidence</h2>
+            <p style="text-align: justify;">Our commitment to transparency and ethical sourcing sets us apart in the jewelry retail industry. We give you access to comprehensive information about our supply chains, so you can make conscious, informed purchases. Our vibrant community of users shares honest reviews, guiding your buying decisions while helping us improve your shopping experience.</p>
+    </div>  
+
+
+</main>
+
+{{>newsletter}}
+{{>quiz}}
+</main>

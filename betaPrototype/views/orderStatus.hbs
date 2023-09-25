@@ -1,0 +1,19 @@
+ {{>breadcrumbs}}
+
+<main class="form-control">
+    <div class="container3">
+        <h2>Order Status</h2>
+        <form class="form" action="/users/order-status" method="POST" enctype="application/x-www-form-urlencoded">
+            <div class="input-group">
+                <input class="input-text" type="text" name="number" id="number" required="">
+                <label for="order-number">Order number</label>
+            </div>
+
+            <div class="input-group">
+                <input class="input-text" type="text" name="email" id="email" required="" autocomplete="off">
+                <label for="email">Email</label>
+            </div>
+            <input class="submit" type="submit" value="Find Order Status">          
+        </form>
+    </div>
+</main>

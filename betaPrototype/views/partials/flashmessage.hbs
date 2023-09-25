@@ -1,0 +1,8 @@
+<script defer src="/public/js/flashMessages.js"></script>
+<div id="flash-message">
+  {{#if messages.error}}
+  <div class="alert-error" role="alert">{{messages.error}}</div>
+  {{else}}
+  <div class="alert-success" role="alert">{{messages.success}}</div>
+  {{/if}}
+</div>

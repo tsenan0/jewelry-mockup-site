@@ -1,0 +1,48 @@
+ {{>breadcrumbs}}
+
+<main class="form-control">
+    <div class="container3">
+        <h2>Registration Form</h2>
+        <div class="password-req">
+            <p>Make sure your password contains:
+                - at least 8 characters
+                - at least 1 uppercase letter
+                - at least 1 lowercase letter
+                - at least 1 number
+                - at least one special character
+            </p>
+        </div>
+        <form id="form" class="form" action="/users/registration" method="POST"
+            enctype="application/x-www-form-urlencoded">
+            <div class="input-group">
+                <input class="input-text" type="text" name="name" id="name" required="" autocomplete="off">
+                <label for="name">Name</label>
+            </div>
+
+            <div class="input-group">
+                <input class="input-text" type="text" name="email" id="email" required="" autocomplete="off">
+                <label for="email">Email</label>
+            </div>
+
+            <div class="input-group">
+                <input class="input-text" type="password" name="password" id="password" required="">
+                <label for="password">Password</label>
+            </div>
+
+            <div class="input-group">
+                <input class="input-text" type="password" name="confirm" id="confirm" required="">
+                <label for="confirm-password">Confirm Password</label>
+            </div>
+
+            <div class="checkbox">
+                <input type="checkbox" name="TOS" id="TOS" required="">
+                <label for="TOS">I have read and agree to the
+                    <a target="_blank" href="/termsService">
+                        Terms of Service & Privacy Policy
+                    </a>
+                </label>
+            </div>
+            <input class="submit" type="submit" value="Create Account">
+        </form>
+    </div>
+</main>

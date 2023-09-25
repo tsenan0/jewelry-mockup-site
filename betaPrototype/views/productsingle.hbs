@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="/public/css/product.css">
+<link rel="stylesheet" href="/public/css/custome.css">
+{{>breadcrumbs}}
+
+<main class="product-page">
+
+    <div class="product-images">
+        <h3 class="title">Customize Your Own Jewelry</h3>
+        <img src="/public/images/customizeYourOwn_03.jpg" alt="Customize Your Own Jewelry"
+            style="width: 100%; max-width: 400px;height: inherit;max-height: inherit;">
+
+    </div>
+
+    <div class="product-details">
+        <h3>Create Your Unique Style</h3>
+        <h4>Discover the thrill of personalizing your own piece of jewelry with our
+            'Customize Your Own Jewelry' option. Start your unique creation journey
+            by selecting your preferred precious metal - choose from either
+            high-quality gold or sterling silver. Add a touch of sparkle with your
+            choice of gemstone, from dazzling diamonds to vibrant rubies or serene
+            sapphires. Ensure the perfect fit with our customization sizing options,
+            and add a truly personal touch with our engraving service, allowing you
+            to inscribe a name, date, or special message. Your bespoke piece will be
+            carefully packaged in our custom boxes, perfect for gifting or safekeeping.
+            Our 'Customize Your Own Jewelry' is more than just a purchase; it's an
+            interactive experience that results in a one-of-a-kind piece, mirroring
+            your taste and encapsulating your story.
+        </h4>
+        <form action="/cart/add-custom" method="POST" class="customization-form">
+            <div class="customization-group">
+                <label class="customization-label">Design:</label>
+                <div class="customization-option">
+                    <input type="radio" name="style" value="Ring" id="ring"><label for="ring">Ring</label>
+                    <input type="radio" name="style" value="Necklace" id="necklace"><label
+                        for="necklace">Necklace</label>
+                    <input type="radio" name="style" value="Bracelet" id="bracelet"><label
+                        for="bracelet">Bracelet</label>
+                    <input type="radio" name="style" value="Earrings" id="earrings"><label
+                        for="earrings">Earrings</label>
+                </div>
+            </div>
+
+            <div class="customization-group">
+                <label class="customization-label">Gemstone:</label>
+                <div class="customization-option">
+                    <input type="radio" name="jewel" value="Diamond" id="diamond"><label for="diamond">Diamond</label>
+                    <input type="radio" name="jewel" value="Ruby" id="ruby"><label for="ruby">Ruby</label>
+                    <input type="radio" name="jewel" value="Sapphire" id="sapphire"><label
+                        for="sapphire">Sapphire</label>
+                </div>
+            </div>
+
+            <div class="customization-group">
+                <label class="customization-label" for="metal">Material:</label>
+                <select name="metal" id="metal" class="customization-field">
+                    <option value="Gold">Gold</option>
+                    <option value="Silver">Silver</option>
+                </select>
+            </div>
+
+            <div class="customization-group">
+                <label class="customization-label" for="size">Size:</label>
+                <select name="size" id="size" class="customization-field">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                </select>
+            </div>
+
+            <div class="customization-group">
+                <label class="customization-label" for="engraving">Engraving:</label>
+                <input type="text" name="engraving" id="engraving" class="customization-field" maxlength="10"
+                    placeholder="Enter your text">
+            </div>
+
+            <div class="customization-group">
+                <label class="customization-label" for="packaging">Packaging:</label>
+                <select name="packaging" id="packaging" class="customization-field">
+                    <option value="Purple">Purple</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Black">Black</option>
+                </select>
+            </div>
+
+            <div class="customization-group">
+                <label class="customization-label" for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" class="customization-field" min="1"
+                    max="{{currentProduct.quantity}}" required>
+            </div>
+
+            <button type="submit" class="add-item" name="button" value="add">Add to cart</button>
+            <button id="saveButton" type="submit" class="save-item" name="button" value="save">Save</button>
+            <script>
+
+            </script>
+
+
+        </form>
+
+
+
+
+
+        <script>
+
+
+            document.getElementById('addToCartForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                var quantity = parseInt(document.getElementById('quantity').value, 10);
+                var productId = '{{currentProduct.id}}';
+
+
+            });
+        </script>
+
+
+
+        <button id="facebookButton">Share on Facebook</button>
+        <button id="twitterButton">Share on Twitter</button>
+
+        <script>
+            // Share on Facebook
+            document.getElementById('facebookButton').addEventListener('click', function () {
+                var url = encodeURIComponent(window.location.href);
+                var shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                openShareWindow(shareUrl);
+            });
+
+
+            // Share on Twitter
+            document.getElementById('twitterButton').addEventListener('click', function () {
+                var title = encodeURIComponent('Check out this amazing product!');
+                var url = encodeURIComponent(window.location.href);
+                var shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+                openShareWindow(shareUrl);
+            });
+
+            function openShareWindow(url) {
+                var width = 600;
+                var height = 400;
+                var left = (window.innerWidth - width) / 2;
+                var top = (window.innerHeight - height) / 2;
+
+                window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top}`);
+            }
+        </script>
+
+    </div>
+
+</main>

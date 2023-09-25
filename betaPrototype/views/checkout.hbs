@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="/public/css/cart.css">
+<form class="checkout-form" action="/cart/review" method="POST" enctype="application/x-www-form-urlencoded">
+    <div class="checkout-details">
+        <div class="user-details">
+            <p class="user-title">Customer Information</p>
+            <div class="input-group">
+                <input class="email" type="text" name="email" required="">
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="ship-details">
+            <p class="ship-title">Shipping Information</p>
+            <div class="input-group">
+                <input class="ship-name" type="text" name="name" required="">
+                <label for="ship-name">Name</label>
+            </div>
+            <div class="address-city">
+                <div class="input-group">
+                    <input class="ship-address" type="text" name="address" required="">
+                    <label for="ship-address">Address</label>
+                </div>
+                <div class="input-group">
+                    <input class="ship-city" type="text" name="city" required="">
+                    <label for="ship-city">City</label>
+                </div>
+            </div>
+            <div class="state-zip">
+                <div class="input-group">
+                    <input class="ship-state" type="text" name="state" required="">
+                    <label for="ship-state">State</label>
+                </div>
+                <div class="input-group">
+                    <input class="ship-zip" type="text" name="zip" required="">
+                    <label for="ship-zip">Zip Code</label>
+                </div>
+            </div>
+        </div>
+        <div class="pay-details">
+            <p class="pay-title">Payment Information</p>
+            <div class="input-group">
+                <input class="pay-card" type="text" name="card" required="">
+                <label for="pay-card">Card Number</label>
+            </div>
+            <div class="exp-cvv">
+                <div class="input-group">
+                    <input class="pay-exp" type="text" name="exp" required="">
+                    <label for="pay-exp">Expiration Date</label>
+                </div>
+                <div class="input-group">
+                    <input class="pay-cvv" type="text" name="cvv" required="">
+                    <label for="pay-cvv">CVV</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="side">
+        <div class="side-content">
+            <p class="text">Subtotal:</p>
+            <p class="cost" id="subtotal">${{cost.subtotal}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Tax:</p>
+            <p class="cost" id="tax">${{cost.tax}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Shipping:</p>
+            <p class="cost">${{cost.shipping}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Total:</p>
+            <p class="total-cost" id="total">${{cost.total}}</p>
+        </div>
+        <input class="submit" type="submit" value="Review Order">
+    </div>
+</form>

@@ -1,0 +1,46 @@
+<div class="main-content">
+  {{#if products}}
+  {{#each products}}
+  <div class="product-wrapper-999">
+    <a href="/product/{{this.id}}" target="_self" class="item-link">
+      <div class="item">
+        <h2 class="title">{{this.title}}</h2>
+        <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}" width="200"
+          height="150" alt="product images coming soon" />
+          {{{displayRatingStars this.rating}}}
+        {{!-- <p class="description">{{this.description}}</p> --}}
+        <h2 class="price">${{this.price}}</h2>
+      </div>
+    </a>
+    {{#if_eq ../account.account_type 'employee' }}
+    <button class="delete-btn" data-id="{{this.id}}">Delete</button>{{! added this for delete}}
+    {{/if_eq}}
+  </div>
+  {{/each}}
+  {{/if}}
+</div>
+<link rel="stylesheet" href="../../public/css/productspage.css">
+<script>
+  $(document).ready(function () {
+    $(".delete-btn").click(function () {
+      const productId = $(this).data("id");
+
+      $.ajax({
+        url: '/product/delete/' + productId,
+        type: 'POST',
+        success: function (result) {
+          //remove from view
+          if (result && result.success) {
+                              //remove the wrapvvvvvvvvvvvvvvvvvvvvv
+            $(`[data-id=${productId}]`).closest('.product-wrapper-999').remove();
+          } else {
+            alert('Failed to delete product.');
+          }
+        },
+        error: function (err) {
+          alert('Error: ' + err.responseText);
+        }
+      });
+    });
+  });
+</script>

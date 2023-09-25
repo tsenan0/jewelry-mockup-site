@@ -1,0 +1,97 @@
+ {{>breadcrumbs}}
+
+<main>
+    <div style="margin: auto; max-width: 1300px; padding: 10px;">
+
+        <div style="margin: 50px; text-align:center;">
+            <h1>Shop All Jewelry</h1>
+            <p>Discover Your Unique Style. Explore Artisan Jewelry.</p>
+        </div>
+
+
+        <div style=" margin: 0 auto 20px; border-top: 1px solid #70707194;padding: 50px 0 50px 0;text-align: center;">
+            <!-- Product filter form -->
+            <div>
+                <form action="/shop" method="GET" id="filter-form">
+
+                    <label for="type">Jewelry Type:</label>
+                    <select id="type" name="type">
+                        <option value="" {{!filters.type ? 'selected' : '' }}>All</option>
+                        <option value="ring" {{isSelected filters.type 'ring' }}>Ring</option>
+                        <option value="necklace" {{isSelected filters.type 'necklace' }}>Necklace</option>
+                        <option value="bracelet" {{isSelected filters.type 'bracelet' }}>Bracelet</option>
+                        <option value="earrings" {{isSelected filters.type 'earrings' }}>Earrings</option>
+                    </select>
+
+                    <label for="material">Material:</label>
+                    <select id="material" name="material">
+                        <option value="" {{!filters.material ? 'selected' : '' }}>All</option>
+                        <option value="silver" {{isSelected filters.material 'silver' }}>Sterling Silver</option>
+                        <option value="white gold" {{isSelected filters.material 'white gold' }}>White Gold</option>
+                        <option value="yellow gold" {{isSelected filters.material 'yellow gold' }}>Yellow Gold</option>
+                    </select>
+
+                    <label for="gemstone">Gemstone:</label>
+                    <select id="gemstone" name="gemstone">
+                        <option value="" {{!filters.gemstone ? 'selected' : '' }}>All</option>
+                        <option value="agate" {{isSelected filters.gemstone 'agate' }}>Agate</option>
+                        <option value="diamond" {{isSelected filters.gemstone 'diamond' }}>Diamond</option>
+                        <option value="moonstone" {{isSelected filters.gemstone 'moonstone' }}>Moonstone</option>
+                        <option value="ruby" {{isSelected filters.gemstone 'ruby' }}>Ruby</option>
+                        <option value="sapphire" {{isSelected filters.gemstone 'sapphire' }}>Sapphire</option>
+                        <option value="eye" {{isSelected filters.gemstone 'eye' }}>Tiger's Eye</option>
+                        <option value="turquoise" {{isSelected filters.gemstone 'turquoise' }}>Turquoise</option>
+                        <option value="none" {{isSelected filters.gemstone 'none' }}>Gemlesss</option>
+                    </select>
+
+
+                    <label for="sort_price">Sort by Price:</label>
+                    <select id="sort_price" name="sort_price">
+                        <option value="-" {{!filters.sort_price ? 'selected' : '' }}>------</option>
+                        <option value="ASC" {{isSelected filters.sort_price 'ASC' }}>Low to High</option>
+                        <option value="DESC" {{isSelected filters.sort_price 'DESC' }}>High to Low</option>
+                    </select>
+
+                    <label for="min_price">Min Price ($):</label>
+                    <input type="number" name="min_price" id="min_price" step="0.01" placeholder="Enter minimum price" value="{{filters.min_price}}">
+
+                    <label for="max_price">Max Price ($):</label>
+                    <input type="number" name="max_price" id="max_price" step="0.01" placeholder="Enter maximum price" value="{{filters.max_price}}">
+
+                    <button type="submit">Apply Filters</button>
+                    <button type="button" onclick="window.location.href='/Shop?reset=true'">Reset Filters</button>
+
+                </form>
+            </div>
+        </div>
+
+
+        <div style="border-bottom: 1px solid #70707194;padding: 0 0 50px 0;margin: 0 auto 20px;">
+            <!-- product grid -->
+            <div class="products-container">
+                {{#if products.length}}
+                {{>productspage}}
+                {{else}}
+                 <p>No products match your filters.</p>
+                {{/if}}
+                
+                
+            </div>
+        </div>
+
+
+        <!-- quiz -->
+        <div style="margin: 20px 50px;text-align: center;padding: 20px 0;">
+            <h3>Discover Your Unique Style with Our Quiz</h3>
+            <p style="text-align: justify;">Experience personalized shopping with our unique style quiz. Tailored to
+                your preferences, this quick, engaging quiz uncovers your distinct taste, leading you to curated jewelry
+                selections from our handcrafted collection. Start your simplified, rewarding shopping journey with the
+                ArtisanAura style quiz today. Let your style shine through your jewelry choices.</p>
+        </div>
+    </div>
+
+    {{>newsletter}}
+    {{>quiz}}
+</main>
+
+<script src="/helpers/shop.js"></script>

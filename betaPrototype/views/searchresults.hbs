@@ -1,0 +1,98 @@
+<main class="main-content">
+
+   {{! des message from quiz}}
+  {{#if description}}
+  <div class="description-message">
+    <p>{{description}}</p>
+  </div>
+  {{/if}}
+
+  {{#if errors}}
+  <ul>
+    {{#each errors}}
+    <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+  {{/if}}
+
+  {{#if results}}
+  {{#each results}}
+   <div class="product-wrapper-999">
+    <a href="/product/{{this.id}}" target="_self" class="item-link">
+      <div class="item">
+        <h2 class="title">{{this.title}}</h2>
+        <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}" width="200"
+          height="150" alt="product images coming soon" />
+          {{{displayRatingStars this.rating}}}
+        {{!-- <p class="description">{{this.description}}</p> --}}
+        <h2 class="price">${{this.price}}</h2>
+      </div>
+    </a>
+    {{#if_eq ../account.account_type 'employee' }}
+    <button class="delete-btn" data-id="{{this.id}}">Delete</button>{{! added this for delete}}
+    {{/if_eq}}
+  </div>
+  {{/each}}
+  {{else}}
+
+  <div style="margin: auto; max-width: 1300px; padding: 10px;">
+
+    <div style="margin: 0 50px 50px; text-align:center;">
+      <h1>No Product Found!</h1>
+      <p>Recommondation is coming after rating and review feature is done!</p>
+      <p>Here are some tips to help you find what you're looking for:</p>
+
+    </div>
+
+    <div style="margin: 0 50px 50px; text-align:center;">
+
+      <ul style="list-style-type: none;">
+        <li>• Check your spelling and try again.</li>
+        <li>• Try using fewer words or more general terms.</li>
+        <li>• Use different words that mean the same thing.</li>
+        <li>HINT: Try searching "ring" or "necklace".</li>
+      </ul>
+      <p>Still can't find what you're looking for? Explore our top collections:</p>
+      <a href="/Shop">Browse our Product Collections</a>
+      <p>Or, reach out to our Customer Service for personalized help:</p>
+      <a href="mailto:artisanaurajewelry@gmail.com">Email Customer Service</a>
+    </div>
+
+    <div class="banner">
+      <img id="responsive-banner" src="/public/images/Banner_Not_Found.jpg" alt="ArtisanAura Jewelry">
+    </div>
+
+
+  </div>
+
+
+
+
+  {{/if}}
+</main>
+<link rel="stylesheet" href="public/css/searchresults.css">
+
+<script>
+  $(document).ready(function () {
+    $(".delete-btn").click(function () {
+      const productId = $(this).data("id");
+
+      $.ajax({
+        url: '/product/delete/' + productId,
+        type: 'POST',
+        success: function (result) {
+          //remove from view
+          if (result && result.success) {
+                              //remove the wrapvvvvvvvvvvvvvvvvvvvvv
+            $(`[data-id=${productId}]`).closest('.product-wrapper-999').remove();
+          } else {
+            alert('Failed to delete product.');
+          }
+        },
+        error: function (err) {
+          alert('Error: ' + err.responseText);
+        }
+      });
+    });
+  });
+</script>
