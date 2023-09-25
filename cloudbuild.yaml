@@ -1,0 +1,35 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/csc-648-848-team-05/artisan-aura'
+      - '.'
+    dir: 'application/prototypes/betaPrototype'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/csc-648-848-team-05/artisan-aura'
+    dir: 'application/prototypes/betaPrototype'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'artisan-aura'
+      - '--image'
+      - 'gcr.io/csc-648-848-team-05/artisan-aura'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'us-west1'
+      - '--allow-unauthenticated'
+      - '--set-env-vars'
+      - 'GCS_KEYFILE=${_KEY_FILE_CONTENT}'
+    dir: 'application/prototypes/betaPrototype'
+    env:
+      - 'PROJECT_ID=csc-648-848-team-05'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
